@@ -5,10 +5,17 @@ let a: Date;
 
 type Description = string;
 
+enum TreeType {
+    Oak = "oak",
+    Birch = "birch",
+    Palm = "palm"
+};
+
 interface Tree {
     height: number;
     age: number;
     description?: Description;
+    type: TreeType;
 };
 
 interface PalmTree extends Tree {
@@ -18,15 +25,29 @@ interface PalmTree extends Tree {
 let myTree: Tree = {
     height: 10,
     age: 5,
-    description: "Small oak tree"
+    description: "Small oak tree",
+    type: TreeType.Oak
 };
 
 let myPalm: PalmTree = {
     height: 15,
     age: 7,
-    numPalmLeaves: 70
+    numPalmLeaves: 70,
+    type: TreeType.Palm
 };
 
-console.log("My regular tree is " + myTree.height + " feet tall and " + myTree.age + " years old.");
-console.log("My palm tree is " + myPalm.height + " feet tall and " + myPalm.age + " years old and it has " + myPalm.numPalmLeaves + " leaves.")
+console.log("My regular tree is an " + myTree.type + " tree. It is " + myTree.height + " feet tall and " + myTree.age + " years old.");
+console.log("My palm tree is a " + myPalm.type + " tree. It is " + myPalm.height + " feet tall and " + myPalm.age + " years old and it has " + myPalm.numPalmLeaves + " leaves.")
+
+
+
+
+
+
+
+function cloneTree(tree: Tree): Tree {
+    return Object.apply({}, tree);
+}
+
+
 
