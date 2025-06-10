@@ -1,53 +1,33 @@
-let x = 123;
-let y: string;
-let z: boolean;
-let a: Date;
 
-type Description = string;
+type WeatherStatus = "sunny" | "partlyCloudy" | "cloudy" | "windy" | "rainy" | "snowy";
 
-enum TreeType {
-    Oak = "oak",
-    Birch = "birch",
-    Palm = "palm"
-};
+type WeatherDate = Date | number | string;
 
-interface Tree {
-    height: number;
-    age: number;
-    description?: Description;
-    type: TreeType;
-};
+interface WeatherReading {
+    date: WeatherDate,
+    status: WeatherStatus
+}
 
-interface PalmTree extends Tree {
-    numPalmLeaves: number;
-};
-
-let myTree: Tree = {
-    height: 10,
-    age: 5,
-    description: "Small oak tree",
-    type: TreeType.Oak
-};
-
-let myPalm: PalmTree = {
-    height: 15,
-    age: 7,
-    numPalmLeaves: 70,
-    type: TreeType.Palm
-};
-
-console.log("My regular tree is an " + myTree.type + " tree. It is " + myTree.height + " feet tall and " + myTree.age + " years old.");
-console.log("My palm tree is a " + myPalm.type + " tree. It is " + myPalm.height + " feet tall and " + myPalm.age + " years old and it has " + myPalm.numPalmLeaves + " leaves.")
-
-
-
-
-
-
-
-function cloneTree(tree: Tree): Tree {
-    return Object.apply({}, tree);
+function getWeatherDate(reading: WeatherReading): Date {
+    if (typeof reading.date === "number") {
+        return new Date(reading.date);
+    } else if (typeof reading.date === "string") {
+        return new Date(Date.parse(reading.date));
+    } else {
+        return reading.date;
+    }
 }
 
 
+let weatherList: WeatherReading[] = [
+    {date: new Date('05-01-2025'), status: "sunny"},
+    {date: new Date('05-02-2025'), status: "rainy"},
+    {date: new Date('05-03-2025'), status: "cloudy"},
+    {date: new Date('05-04-2025'), status: "cloudy"},
+    {date: new Date('05-05-2025'), status: "rainy"},
+    {date: new Date('05-06-2025'), status: "sunny"}
+];
 
+console.log(weatherList);
+
+console.log(findMaxForField(weatherList, "date"));
