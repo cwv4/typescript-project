@@ -1,33 +1,31 @@
+type id = string | number;
 
-type WeatherStatus = "sunny" | "partlyCloudy" | "cloudy" | "windy" | "rainy" | "snowy";
-
-type WeatherDate = Date | number | string;
-
-interface WeatherReading {
-    date: WeatherDate,
-    status: WeatherStatus
+type LicensePlate = {
+    readonly plate: id;
+    state: string;
 }
 
-function getWeatherDate(reading: WeatherReading): Date {
-    if (typeof reading.date === "number") {
-        return new Date(reading.date);
-    } else if (typeof reading.date === "string") {
-        return new Date(Date.parse(reading.date));
+let myPlate: LicensePlate = {
+    plate: '34DF80',
+    state: 'IN'
+}
+
+let myOtherPlate: LicensePlate = {
+    plate: 984782,
+    state: 'MI'
+}
+
+console.log(myPlate);
+console.log(myOtherPlate);
+
+function printId(id: Readonly<id>): void {
+    if (typeof id === 'string') {
+        console.log(id.toUpperCase());
     } else {
-        return reading.date;
+        console.log(id * 2);
     }
 }
 
+printId(myPlate.plate);
+printId(myOtherPlate.plate);
 
-let weatherList: WeatherReading[] = [
-    {date: new Date('05-01-2025'), status: "sunny"},
-    {date: new Date('05-02-2025'), status: "rainy"},
-    {date: new Date('05-03-2025'), status: "cloudy"},
-    {date: new Date('05-04-2025'), status: "cloudy"},
-    {date: new Date('05-05-2025'), status: "rainy"},
-    {date: new Date('05-06-2025'), status: "sunny"}
-];
-
-console.log(weatherList);
-
-console.log(findMaxForField(weatherList, "date"));

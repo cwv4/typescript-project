@@ -36,8 +36,8 @@ let myPalm: PalmTree = {
     type: TreeType.Palm
 };
 
-console.log("My regular tree is an " + myTree.type + " tree. It is " + myTree.height + " feet tall and " + myTree.age + " years old.");
-console.log("My palm tree is a " + myPalm.type + " tree. It is " + myPalm.height + " feet tall and " + myPalm.age + " years old and it has " + myPalm.numPalmLeaves + " leaves.")
+// console.log("My regular tree is an " + myTree.type + " tree. It is " + myTree.height + " feet tall and " + myTree.age + " years old.");
+// console.log("My palm tree is a " + myPalm.type + " tree. It is " + myPalm.height + " feet tall and " + myPalm.age + " years old and it has " + myPalm.numPalmLeaves + " leaves.")
 
 
 
@@ -52,8 +52,8 @@ function findMaxForField<T>(array: T[], fieldName: keyof T): T {
 
 let treeArray = [myTree, myPalm];
 
-console.log(findMaxForField(treeArray, "height"));
-console.log(findMaxForField(treeArray, "age"))
+// console.log(findMaxForField(treeArray, "height"));
+// console.log(findMaxForField(treeArray, "age"))
 
 
 
